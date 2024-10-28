@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Alquileres de Vehículos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="container-fluid bg-light">
+    <header class="container py-3">
+      <h1 class="text-primary text-center">Gestor de Alquileres de Vehículos</h1>
+    </header>
+  </div>
+  <!-- Barra de navegación -->
+  <nav id="barra_de_navegacion" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a href="informes.html" class="nav-link">Informe de servicios</a>
+    </div>
+  </nav>
+  <!-- Sección de Filtrado -->
+  <div class="container mt-5">
+    <h2 class="text-secondary">Filtrar Vehículos</h2>
+    <form id="filter-form" class="p-4 bg-white shadow rounded">
+      <div class="form-group">
+        <label for="filter-disponible" class="font-weight-bold">Disponibilidad:</label>
+        <select id="filter-disponible" class="form-control">
+          <option value="all">Todos</option>
+          <option value="available">Disponibles</option>
+          <option value="not-available">No Disponibles</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="filter-modelo" class="font-weight-bold">Modelo:</label>
+        <input type="text" id="filter-modelo" class="form-control" placeholder="Ingrese el modelo">
+      </div>
+      <div class="form-group">
+        <label for="filter-marca" class="font-weight-bold">Marca:</label>
+        <input type="text" id="filter-marca" class="form-control" placeholder="Ingrese la marca">
+      </div>
+      <div class="form-group">
+        <label for="filter-año" class="font-weight-bold">Año:</label>
+        <input type="number" id="filter-año" class="form-control" placeholder="Ingrese el año">
+      </div>
+      <button type="button" class="btn btn-primary btn-block mt-3" onclick="filtrarVehiculos()">Filtrar</button>
+    </form>
+  </div>
+  <!-- Sección de Alquiler -->
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">Formulario de Alquiler</h3>
+      </div>
+      <div class="card-body">
+        <form id="form-alquiler">
+          <div class="form-group">
+            <label for="vehiculo">Seleccione Vehículo:</label>
+            <select id="vehiculo" class="form-control">
+              <option value="">Seleccione un vehículo</option>
+              <option value="vehiculo1">Vehículo 1</option>
+              <option value="vehiculo2">Vehículo 2</option>
+              <!-- Agregar más opciones según los vehículos disponibles -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fecha-inicio">Fecha de Inicio:</label>
+            <input type="date" id="fecha-inicio" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="fecha-fin">Fecha de Fin:</label>
+            <input type="date" id="fecha-fin" class="form-control">
+          </div>
+          <button type="button" class="btn btn-primary" onclick="realizarAlquiler()">Realizar Alquiler</button>
+        </form>
+        <p id="status-alquiler" class="mt-3"></p> <!-- Mensaje de estado del alquiler -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Catálogo de Vehículos -->
+  <div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">Catálogo de Vehículos</h1>
+    <div id="lista-vehiculos" class="row">
+      <!-- Aquí se cargarán los vehículos desde JavaScript -->
+    </div>
+  </div>
+
+</body>
+</html>
+
