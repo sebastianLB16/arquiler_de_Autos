@@ -452,30 +452,30 @@ function registrar() {
     const cedula = document.getElementById("cedula")?.value;
     const status = document.getElementById("status");
 
-    // Validación de campos
+    //Validación de campos
     if (!usuario || !contraseña || !email || !confirmarContraseña || !cedula) {
         status.textContent = "Por favor, complete todos los campos.";
         return;
     }
 
-    // Validación de contraseñas
+    //Validación de contraseñas
     if (contraseña !== confirmarContraseña) {
         status.textContent = "Las contraseñas no coinciden.";
         return;
     }
 
-    // Obtención de los clientes existentes
+    //Obtención de los clientes existentes
     let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
     ver();
 
-    // Verificación de cédula y correo únicos
+    //Verificación de cédula y correo únicos
     const existeCliente = clientes.some(cliente => cliente.cedula === cedula || cliente.email === email);
     if (existeCliente) {
         status.textContent = "La cédula o el correo electrónico ya están registrados.";
         return;
     }
 
-    // Creación del nuevo usuario
+    //Creación del nuevo usuario
     const usuarioNuevo=new Usuario(usuario, cedula, email, contraseña);
     clientes.push(usuarioNuevo);
     localStorage.setItem("clientes", JSON.stringify(clientes));
@@ -483,26 +483,10 @@ function registrar() {
 
     status.textContent = "Registro exitoso. Ahora puede iniciar sesión.";
 
-    // Volver al modo de inicio de sesión
+    //Volver al modo de inicio de sesión
     toggleRegister();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Asignar el evento de clic al botón "Registrarme" para alternar entre "Iniciar Sesión" y "Registrarse"
+//Asigna el evento de clic al botón "Registrarme"
 document.getElementById("boton_registrarme").addEventListener("click", function() {
     if (isRegisterMode) {
         registrar();
